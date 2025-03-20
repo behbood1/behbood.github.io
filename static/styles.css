@@ -73,3 +73,12 @@ body {
  .danger {
    color: rgb(204, 14, 14);
  }
+
+ @media screen and (max-width: 600px) {
+  form {
+    padding: 5px;
+  }
+  input, textarea {
+    width: 100%;
+  }
+ }
