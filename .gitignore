@@ -1,0 +1,26 @@
+# محیط مجازی
+venv/
+.venv/
+
+# فایل‌های cache Python
+__pycache__/
+*.pyc
+
+# فایل‌های IDE
+.vscode/
+.idea/
+
+# فایل‌های سیستم عامل
+.DS_Store
+
+# فایل‌های پوشه‌های اجرایی
+*.log
+*.db
+*.sqlite
+
+# پوشه‌های پوشش تست
+.coverage
+.tox/
+.nox/
+.hypothesis/
+.pytest_cache/

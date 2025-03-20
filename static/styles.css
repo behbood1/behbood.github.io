@@ -1,0 +1,75 @@
+body {
+    font-family: IRYekan, sans-serif;
+    background-color: lightblue;
+    text-align: center;
+    direction: rtl;
+ }
+ h1  {
+    color: #333;
+ }
+ h2 {
+   color: #333;
+ }
+ form {
+   direction: rtl;
+   width: 92%;
+   max-width: 700px;
+   margin: auto;
+   background: white;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+   background-image: url("/static/benz.jpg"); 
+   background-size: cover; 
+   background-position: center;
+
+ }
+ label {
+
+   color: azure;
+   display: block;
+   margin-top: 10px;
+   margin-right: 25%;
+   text-align: right;
+   font-weight: bold;
+   text-shadow: 2px 2px 5px #000000;
+
+ }
+ input, textarea {
+   width: 92%;
+   padding: 8px;
+   margin-top: 5px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   font-size: large;
+   outline: none;
+ }
+ input {
+  width: 50%;
+ }
+ input:focus, textarea:focus {
+  background-color: rgb(252, 252, 235);
+  transition: background-color 0.35s ease-out;
+ }
+ button {
+  width: 140px;
+  height: 39px;
+  font-family: IRANYekan;
+  
+ }
+ button:hover {
+   background: lightcoral;
+   border-radius: 4px;
+   transition: background-color 0.35s ease-out;
+   outline: none;
+   border: none;
+ }
+ button:active {
+  background: lightblue;
+ }
+ .success {
+   color: green;
+ }
+ .danger {
+   color: rgb(204, 14, 14);
+ }

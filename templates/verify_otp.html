@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تأیید ایمیل</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <h2>لطفاً کد تأیید ارسال شده به ایمیل خود را وارد کنید:</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <input type="text" name="otp" required placeholder="کد 6 رقمی" oninvalid="this.setCustomValidity('لطفاً کد شش رقمی را وارد کنید.')" oninput="this.setCustomValidity('')">
+        <button class="verify" type="submit">تأیید</button>
+    </form>
+</body>
+</html>

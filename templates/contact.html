@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فرم تماس</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+</head>
+<body>
+    <h2>فرم تماس</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <p class="{{ category }}">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+        <label for="name">نام:</label>
+        <input type="text" name="name" required oninvalid="this.setCustomValidity('لطفاً نام خود را وارد کنید.')" oninput="this.setCustomValidity('')">
+
+        <label for="lname">نام خانوادگی:</label>
+        <input type="text" name="lname" required oninvalid="this.setCustomValidity('لطفاً نام خانوادگی خود را وارد کنید.')" oninput="this.setCustomValidity('')">
+
+        <label for="email">ایمیل:</label>
+        <input type="email" name="email" required oninvalid="this.setCustomValidity('لطفاً ایمیل خود را وارد کنید.')" oninput="this.setCustomValidity('')">
+
+        <label for="age">سن:</label>
+        <input type="text" name="age" required oninvalid="this.setCustomValidity('لطفاً سن خود را وارد کنید.')" oninput="this.setCustomValidity('')">
+
+        <label for="phone">تلفن:</label>
+        <input type="tel" name="phone" pattern="[0-9]{11}" placeholder="09121231234">
+
+        <label for="message">پیام:</label>
+        <textarea name="message" rows="5" required oninvalid="this.setCustomValidity('لطفاً پیام خود را بنویسید.')" oninput="this.setCustomValidity('')"></textarea>
+
+        <input type="text" name="honeypot" style="display:none;">  <!-- فیلد مخفی -->
+
+        <button type="submit">ارسال</button>
+    </form>
+</body>
+</html>
