@@ -79,6 +79,9 @@ body {
     padding: 5px;
   }
   input, textarea {
-    width: 100%;
+    width: 92%;
+  }
+  label {
+    margin-right: 5%;
   }
  }
