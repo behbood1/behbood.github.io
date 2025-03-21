@@ -74,6 +74,10 @@ body {
    color: rgb(204, 14, 14);
  }
 
+ .iti--allow-dropdown input, .iti--allow-dropdown input[type=text], .iti--allow-dropdown input[type=tel], .iti--separate-dial-code input, .iti--separate-dial-code input[type=text], .iti--separate-dial-code input[type=tel] {
+  width: 100%;
+ }
+
  @media screen and (max-width: 600px) {
   form {
     padding: 5px;

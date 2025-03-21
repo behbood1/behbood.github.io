@@ -35,6 +35,7 @@ def contact():
         email = request.form.get("email", "").strip()
         age = request.form.get("age", "").strip()
         phone = request.form.get("phone", "").strip()
+        country_code = request.form.get("country_code", "").strip()
         message = request.form.get("message", "").strip()
         honeypot = request.form.get("honeypot", "").strip()  # فیلد مخفی
 
@@ -45,9 +46,11 @@ def contact():
             return redirect(url_for("contact"))
 
         # بررسی فیلدهای اجباری
-        if not name or not email or not message or not lname or not age:
+        if not name or not email or not message or not lname or not age or not phone or not country_code:
             flash("لطفاً همه‌ی فیلدها را پر کنید!", "danger")
             return redirect(url_for("contact"))
+        
+        full_phone = f"{country_code} {phone}"
 
         # ذخیره اطلاعات در session
         session["form_data"] = {
@@ -55,7 +58,7 @@ def contact():
             "lname": lname,
             "email": email,
             "age": age,
-            "phone": phone,
+            "phone": full_phone,
             "message": message
         }
 

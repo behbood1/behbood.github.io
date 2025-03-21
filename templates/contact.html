@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فرم تماس</title>
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+</head>
 </head>
 <body>
     <h2>فرم تماس</h2>
@@ -29,7 +31,8 @@
         <input type="text" name="age" required oninvalid="this.setCustomValidity('لطفاً سن خود را وارد کنید.')" oninput="this.setCustomValidity('')">
 
         <label for="phone">تلفن:</label>
-        <input type="tel" name="phone" pattern="[0-9]{11}" placeholder="09121231234">
+        <input id="phone" type="tel" name="phone" pattern="[0-9]{10}" placeholder="9121231234">
+        <input type="hidden" id="country_code" name="country_code">
 
         <label for="message">پیام:</label>
         <textarea name="message" rows="5" required oninvalid="this.setCustomValidity('لطفاً پیام خود را بنویسید.')" oninput="this.setCustomValidity('')"></textarea>
@@ -38,5 +41,28 @@
 
         <button type="submit">ارسال</button>
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script>
+        const phoneInput = document.querySelector("#phone");
+        const countryCodeInput = document.querySelector("#country_code");
+
+        const iti = window.intlTelInput(phoneInput, {
+            initialCountry: "ir", // مقدار پیش‌فرض ایران
+            preferredCountries: ["ir", "us", "gb"],
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+        });
+
+        // هنگامی که شماره تغییر می‌کند، کد کشور در فیلد مخفی ذخیره می‌شود
+        phoneInput.addEventListener("countrychange", function () {
+            const countryData = iti.getSelectedCountryData();
+            countryCodeInput.value = "+" + countryData.dialCode; // ذخیره کد کشور
+        });
+
+        // مقدار کد کشور را به‌صورت پیش‌فرض ذخیره می‌کند
+        window.onload = function () {
+            const countryData = iti.getSelectedCountryData();
+            countryCodeInput.value = "+" + countryData.dialCode;
+        };
+    </script>
 </body>
 </html>
